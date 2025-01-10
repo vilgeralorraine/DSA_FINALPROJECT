@@ -1,0 +1,64 @@
+body{
+    background-image: url(new.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.title{
+    text-align: center;
+}
+.nav-container{
+    text-align: center;
+}
+.nav1{
+    border: 1px solid hsla(0, 0%, 80%, 0.219);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsla(0, 100%, 36%, 0.664);
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    color: rgba(19, 2, 7, 0.801);
+    background: rgba(236, 7, 45, 0.897);
+}
+.nav2{
+    border: 1px solid hsla(0, 0%, 80%, 0.219);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsla(0, 100%, 36%, 0.664);
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    color: rgba(19, 2, 7, 0.801);
+    background: rgba(236, 7, 45, 0.897);
+}
+.nav3{
+    border: 1px solid hsla(0, 0%, 80%, 0.219);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsla(0, 100%, 36%, 0.664);
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    color: rgba(19, 2, 7, 0.801);
+    background: rgba(236, 7, 45, 0.897);
+}
+.label-name{
+    text-align: center;
+}
+.input-name{
+    border-radius: 10px;
+    padding: 10px;
+    margin: 100px;
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+}
+.input-message{
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+}
+.enter-button{
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+}
