@@ -35,7 +35,8 @@ function JournalForm() {
             {/*input name here */}
                 <div>
                     <input
-                        className="input-name"
+         
+         className="input-name"
                         type="text"
                         id="name"
                         placeholder="Enter your name"
