@@ -20,6 +20,12 @@ function JournalForm() {
             setNewName(""); 
             setEntry("");
         } 
+        //tryyy
+        function handleBrowse(event) {
+            <div className="name-browse">
+                <p>Thank you for submitting</p>
+            </div>
+        }
     }
     return (
         <div className="title">
@@ -35,8 +41,7 @@ function JournalForm() {
             {/*input name here */}
                 <div>
                     <input
-         
-         className="input-name"
+                        className="input-name"
                         type="text"
                         id="name"
                         placeholder="Enter your name"
@@ -55,10 +60,10 @@ function JournalForm() {
                         onChange={handleEntry}
                     /><br/>
                 <button className="submit-button" onClick={handleSubmit}>Submit</button>
-            </div>
+            </div>z
             
             <div className="message-list">
-                <h2>Your Message:</h2>
+                <h2 className="heading-2">Your Message:</h2>
                 {entries.length === 0 ? (
                     <p>Submit your first entry!</p>
                 ) : (
@@ -75,40 +80,6 @@ function JournalForm() {
                 <small>&copy; Anonymous Journal</small>
                 </footer>
             </form>
-            
-            {/*<div>
-                <input
-                    className="input-name"
-                    type="text"
-                    placeholder="Enter your name"
-                    value={name}
-                    onChange={handleChange}
-                /><br/>
-
-                <input
-                    className="input-entry"
-                    type="text"
-                    placeholder="Enter your message"
-                    value={entry}
-                    onChange={handleEntry}
-                /><br/>
-
-                <button className="submit-button" onClick={handleSubmit}>Submit</button>
-            </div>
-            <div className="entries-list">
-                <h2>Your Message:</h2>
-                {entries.length === 0 ? (
-                    <p>No entries yet. Please submit your first entry!</p>
-                ) : (
-                    entries.map((entry, index) => (
-                        <div key={index} className="entry">
-                            <h3>{entry.name}</h3>
-                            <p>{entry.text}</p>
-                            <small>{entry.date}</small>
-                        </div>
-                    ))
-                )}
-            </div>*/}
         </div>
     );
 }
