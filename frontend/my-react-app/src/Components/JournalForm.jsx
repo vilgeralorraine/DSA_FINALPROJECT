@@ -12,7 +12,7 @@ function JournalForm() {
         setFrontPage("browse");{/*for browse button*/}
     }
     function handleSubmitPage() {
-        setFrontPage("submitBrowse");{/*for submit btn*/}
+        setFrontPage("submitBrowse");{/*for submit button*/}
     }
     function handleChange(event) {
         setNewName(event.target.value);
@@ -20,7 +20,7 @@ function JournalForm() {
     function handleEntry(event) {
         setEntry(event.target.value);
     }
-    async function handleSubmit (event) {
+    function handleSubmit(event) {
         event.preventDefault(); 
         if (name && entry) { 
             const newEntry = { name, text: entry, date: new Date().toLocaleString() };
@@ -29,27 +29,6 @@ function JournalForm() {
             setEntry("");
             setFrontPage("first");
         } 
-        try{
-            const response = await fetch("https://vilgera-api.azurewebsites.net", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(entry),
-            });
-            if (response.ok){
-                const result = await response.jsoon();
-                alert("Thank you for submitting!");
-                console.log("API Response: ", result);
-                console.log("Submitted succesfully!");
-            } else {
-                alert("failed to submit message.");
-                console.error("API Error", response.statusText);
-            }
-        } catch (error){
-            alert("An error occurred.");
-            console.error("error", error);
-        }
     }
     return (
         <div className="title">
@@ -82,27 +61,28 @@ function JournalForm() {
                     <button className="go-back" onClick={() => setFrontPage("first")}>Go Back</button>{/*go back 2 da frontpage*/}
                 </div>
             )}
-            {frontPage === "browse" && {/*browse input messages*/}(
-                <div className="message-list">
-                    <h2 className="heading-2">Your Message:</h2>
-                    {entries.length > 0 ? (
-                        entries.map((entry, index) => (
-                            <div key={index} className="entry">
-                                <h3>{entry.name}</h3>
-                                <p>{entry.text}</p>
-                                <small>{entry.date}</small>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No entries yet!!</p>
-                    )}
-                    <button className="back" onClick={() => setFrontPage("first")}>Home</button>{/*go back 2 front page*/}
+            {frontPage === "browse" && ( 
+                <div>
+                <h1>Messages</h1> 
+                {entries.length > 0 ? ( 
+                    entries.map((entry, index) => ( 
+                        <div key={index} className="entry"> 
+                            <p>Name:{entry.name}</p> 
+                            <p>Message:{entry.text}</p>
+                            <p><small>Date:{entry.date}</small></p>
+                        </div>
+                    ))
+                ) : (
+                    <p>No entries available. Submit your first entry!</p> 
+                )}
+                <button className="back-button" onClick={() => setFrontPage("first")}>
+                    Go Back</button>
                 </div>
-            )}
-            <footer>
-                <small>&copy; Anonymous Journal</small>
-                </footer>
-        </div>
+                )}
+                <footer>
+                    <small>&copy; Anonymous Journal</small>
+                    </footer>
+      </div>
     );
 }
 
