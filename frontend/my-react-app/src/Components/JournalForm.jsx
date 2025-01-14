@@ -5,7 +5,15 @@ function JournalForm() {
     const [name, setNewName] = useState(""); 
     const [entries, setMessage] = useState([]); 
     const [entry, setEntry] = useState(""); 
+    const [frontPage, setFrontPage] = useState("first");
 
+
+    function handleBrowse() {
+        setFrontPage("browse");
+    }
+    function handleSubmitPage() {
+        setFrontPage("brsubmitowse");
+    }
     function handleChange(event) {
         setNewName(event.target.value);
     }
