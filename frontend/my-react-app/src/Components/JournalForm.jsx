@@ -12,7 +12,7 @@ function JournalForm() {
         setFrontPage("browse");
     }
     function handleSubmitPage() {
-        setFrontPage("brsubmitowse");
+        setFrontPage("submitBrowse");
     }
     function handleChange(event) {
         setNewName(event.target.value);
@@ -27,6 +27,7 @@ function JournalForm() {
             setMessage([...entries, newEntry]); 
             setNewName(""); 
             setEntry("");
+            setFrontPage("first");
         } 
         //tryyy
         function handleBrowse(event) {
@@ -37,16 +38,14 @@ function JournalForm() {
     }
     return (
         <div className="title">
-            <h1>Anonymous Journal</h1>
-            <div className="nav-container">
-                <nav>
-                    <a className="nav1" href="#">About<span></span></a>
-                    <a className="nav2" href="#">Submit<span></span></a>
-                    <a className="nav3" href="#">Browse<span></span></a>
-                </nav>
-            </div>
-            <form onSubmit = {handleSubmit}>
-            {/*input name here */}
+            {frontPage === "first" && (
+                <div>
+                <h1>Anonymous Journal</h1>
+                    <button className="submit-button" onClick={handleSubmitPage}></button>
+                    <button className="browse-button" onClick={handleBrowse}></button>
+                </div>
+            )}
+            {firstPage === "submitBrowse" && (
                 <div>
                     <input
                         className="input-name"
@@ -56,9 +55,6 @@ function JournalForm() {
                         value={name}
                         onChange={handleChange}
                     /><br/>
-                </div>
-                {/*input message here */}
-                <div>
                     <input
                         className="input-message"
                         type="text"
@@ -67,8 +63,10 @@ function JournalForm() {
                         value={entry}
                         onChange={handleEntry}
                     /><br/>
-                <button className="submit-button" onClick={handleSubmit}>Submit</button>
-            </div>z
+                    <button className="submit-button" onClick={handleSubmit}>Submit</button>
+                </div>
+            )}
+            
             
             <div className="message-list">
                 <h2 className="heading-2">Your Message:</h2>
@@ -87,7 +85,6 @@ function JournalForm() {
             <footer>
                 <small>&copy; Anonymous Journal</small>
                 </footer>
-            </form>
         </div>
     );
 }
