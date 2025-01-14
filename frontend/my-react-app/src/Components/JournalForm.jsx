@@ -35,7 +35,7 @@ function JournalForm() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(entries),
+                body: JSON.stringify(newEntry),
             });
             if (response.ok){
                 const result = await response.jsoon();
