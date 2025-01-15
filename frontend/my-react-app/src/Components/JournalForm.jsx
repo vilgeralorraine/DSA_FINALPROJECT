@@ -1,6 +1,5 @@
 import "./JournalForm.css";
 import React, { useState, useEffect } from 'react';
-import axios from "axios";
 
 function JournalForm() {
     const [name, setNewName] = useState(""); 
@@ -25,15 +24,15 @@ function JournalForm() {
     function handleSubmitPage() {
         setFrontPage("submitBrowse");{/*for submit button*/}
     }
-    
+
     function handleChange(event) {
         setNewName(event.target.value);
     }
     function handleEntry(event) {
         setEntry(event.target.value);
     }
-    const handleSubmit = async (e) => {
-        e.preventDefault(); 
+    async function handleSubmit(event) {
+        event.preventDefault(); 
         if (name && entry) { 
             const newEntry = { name, text: entry, date: new Date().toLocaleString() };
             setMessage([...entries, newEntry]); 

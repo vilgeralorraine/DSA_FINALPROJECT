@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
-const JournalForm = require("./Models/JournalForm");
 
 const http = require('http');
 const server = http.createServer(app);
@@ -10,15 +9,18 @@ const server = http.createServer(app);
 app.use(express.static('public'));
 
 // start the server
-app.get("/api/submit", async(req, res)=> {
-    try{
-        const entry = await JournalForm.find();
-        res.json(entry);
-    } catch (error) {
-        console.error("error fetching journalform", error);
-        res.status(500).json({ message: "error fetching journalform"});
-    }
-});
+app.get('/', (req, res) => {
+    res.sendFile(`hello`)
+})
+// app.get("/api/submit", async(req, res)=> {
+//     try{
+//         const entry = await JournalForm.find();
+//         res.json(entry);
+//     } catch (error) {
+//         console.error("error fetching journalform", error);
+//         res.status(500).json({ message: "error fetching journalform"});
+//     }
+// });
 
 //connection to mongodb
 mongoose
