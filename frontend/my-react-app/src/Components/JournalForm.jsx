@@ -1,5 +1,5 @@
 import "./JournalForm.css";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function JournalForm() {
     const [name, setNewName] = useState(""); 
@@ -7,16 +7,16 @@ function JournalForm() {
     const [entry, setEntry] = useState(""); 
     const [frontPage, setFrontPage] = useState("first");
 
-    useEffect(() => {
-        const fetchJournalForm = async () => {
-            try{
-                const response = await axios.get("http://localhost:4000/api/submit")
-            } catch (error) {
-                console.error("error fetching from data", error);
-            }
-        };
-        fetchJournalForm();
-    }, []);
+    // useEffect(() => {
+    //     const fetchJournalForm = async () => {
+    //         try{
+    //             const response = await axios.get("http://localhost:4000/api/submit")
+    //         } catch (error) {
+    //             console.error("error fetching from data", error);
+    //         }
+    //     };
+    //     fetchJournalForm();
+    // }, []);
 
     function handleBrowse() {
         setFrontPage("browse");{/*for browse button*/}
