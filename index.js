@@ -13,6 +13,8 @@ app.get('/', (req, res) => {
     res.sendFile(`hello`)
 })
 
+//connection to mongodb
+mongoose
     .connect("mongodb+srv://VilgeraLorraine:LORIRI@finalprojectapp.grnao.mongodb.net/", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -25,7 +27,7 @@ app.get('/', (req, res) => {
 
 //Middleware
 app.use(cors({
-    origin: ["https://vilgera-api.azurewebsites.net/submit","http://localhost:5175/", "https://brave-ground-018cb1e00.4.azurestaticapps.net" ], methods: ["GET", "POST"]
+    origin: ["https://vilgera-api.azurewebsites.net/submit","http://localhost:4000/",  ], methods: ["GET", "POST"]
 }));
 app.use(express.json());
 
@@ -35,9 +37,15 @@ const submitJournalForm = require('./API/submit')
 //use API
 app.use("/submit", submitJournalForm);
 
+//start the server locally
+// const PORT = 4000;
+
+// app.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
+// });
 
 //start the server in MS Azure
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, ()=> {
     console.log(`Server is running on http://localhost:${PORT}`);
