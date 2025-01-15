@@ -34,15 +34,15 @@ mongoose
 
 //Middleware
 app.use(cors({
-    origin: "http://localhost:5173/"
+    origin: ["https://vilgera-api.azurewebsites.net/submit","http://localhost:5173/", ]
 }));
 app.use(express.json());
 
 //import API folder
-// const submitJournalForm = require('./API/submit')
+const submitJournalForm = require('./API/submit')
 
 //use API
-// app.use("/submit", submitJournalForm);
+app.use("/submit", submitJournalForm);
 
 //start the server locally
 // const PORT = 4000;
