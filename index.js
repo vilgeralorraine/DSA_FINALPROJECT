@@ -36,7 +36,7 @@ mongoose
 
 //Middleware
 app.use(cors({
-    origin: ["https://vilgera-api.azurewebsites.net/submit","http://localhost:5173/", ]
+    origin: ["https://vilgera-api.azurewebsites.net/submit","http://localhost:5175/", ], methods: ["GET", "POST"]
 }));
 app.use(express.json());
 

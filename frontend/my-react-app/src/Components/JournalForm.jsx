@@ -7,17 +7,6 @@ function JournalForm() {
     const [entry, setEntry] = useState(""); 
     const [frontPage, setFrontPage] = useState("first");
 
-    // useEffect(() => {
-    //     const fetchJournalForm = async () => {
-    //         try{
-    //             const response = await axios.get("http://localhost:4000/api/submit")
-    //         } catch (error) {
-    //             console.error("error fetching from data", error);
-    //         }
-    //     };
-    //     fetchJournalForm();
-    // }, []);
-
     function handleBrowse() {
         setFrontPage("browse");{/*for browse button*/}
     }
@@ -33,8 +22,9 @@ function JournalForm() {
     }
     async function handleSubmit(event) {
         event.preventDefault(); 
+        const newEntry = { name, text: entry, date: new Date().toLocaleString() };
         if (name && entry) { 
-            const newEntry = { name, text: entry, date: new Date().toLocaleString() };
+           
             setMessage([...entries, newEntry]); 
             setNewName(""); 
             setEntry("");
@@ -43,6 +33,7 @@ function JournalForm() {
         try {
             const response = await fetch("https://vilgera-api.azurewebsites.net/submit", {
                 method: "POST",
+                mode: "cors",
                 headers: {
                     "Content-Type": "application/json",
                 },
