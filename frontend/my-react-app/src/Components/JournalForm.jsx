@@ -25,6 +25,7 @@ function JournalForm() {
     function handleSubmitPage() {
         setFrontPage("submitBrowse");{/*for submit button*/}
     }
+    
     function handleChange(event) {
         setNewName(event.target.value);
     }
