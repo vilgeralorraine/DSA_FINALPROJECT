@@ -24,7 +24,6 @@ function JournalForm() {
         event.preventDefault(); 
         const newEntry = { name, text: entry, date: new Date().toLocaleString() };
         if (name && entry) { 
-           
             setMessage([...entries, newEntry]); 
             setNewName(""); 
             setEntry("");
@@ -33,7 +32,7 @@ function JournalForm() {
         try {
             const response = await fetch("https://vilgera-api.azurewebsites.net/submit", {
                 method: "POST",
-                mode: "cors",
+                mode: "cors", 
                 headers: {
                     "Content-Type": "application/json",
                 },
