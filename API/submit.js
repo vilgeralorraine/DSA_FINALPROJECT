@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Form = require("../Models/JournalForm.js");
 
-router.post("/", async (req, res)=> {
+
+router.post("/API", async (req, res)=> {
     const { name, message } = req.body;
 
     try{

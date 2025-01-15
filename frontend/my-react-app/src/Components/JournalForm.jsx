@@ -1,5 +1,6 @@
 import "./JournalForm.css";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 
 function JournalForm() {
     const [name, setNewName] = useState(""); 
@@ -7,6 +8,16 @@ function JournalForm() {
     const [entry, setEntry] = useState(""); 
     const [frontPage, setFrontPage] = useState("first");
 
+    useEffect(() => {
+        const fetchJournalForm = async () => {
+            try{
+                const response = await axios.get("http://localhost:4000/api/submit")
+            } catch (error) {
+                console.error("error fetching from data", error);
+            }
+        };
+        fetchJournalForm();
+    }, []);
 
     function handleBrowse() {
         setFrontPage("browse");{/*for browse button*/}
@@ -20,8 +31,8 @@ function JournalForm() {
     function handleEntry(event) {
         setEntry(event.target.value);
     }
-    function handleSubmit(event) {
-        event.preventDefault(); 
+    const handleSubmit = async (e) => {
+        e.preventDefault(); 
         if (name && entry) { 
             const newEntry = { name, text: entry, date: new Date().toLocaleString() };
             setMessage([...entries, newEntry]); 
@@ -29,12 +40,35 @@ function JournalForm() {
             setEntry("");
             setFrontPage("first");
         } 
+        try {
+            const response = await fetch("https://vilgera-api.azurewebsites.net/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newEntry),
+            });
+
+            if(response.ok){
+                const result = await response.json();
+                alert("message submitted successfully");
+                console.log("API Error", result);
+                console.log("message submission successful");
+                setMessage([]);
+            } else {
+                alert("failed to submit message", response.statusText);
+
+            }
+        } catch (error) {
+            alert("an error occured");
+            console.log("error", error);
+        }
     }
     return (
         <div className="title">
             {frontPage === "first" && (
                 <div>
-                <h1>Anonymous Journal</h1>
+                <h1>Journal</h1>
                     <button className="submit-button" onClick={handleSubmitPage}>Submit your first message!</button>{/*for submitting messages button*/}
                     <button className="browse-button" onClick={handleBrowse}>Browse messages</button>{/*for browsing messages button*/}
                 </div>

@@ -5,7 +5,9 @@ const FormSchema = new mongoose.Schema({
     message: { type: String, required: true },
 });
 
-module.exports = mongoose.model("Form", FormSchema);
+const JournalForm = mongoose.model("JournalForm", FormSchema);
+module.exports = JournalForm;
+//module.exports = mongoose.model("Form", FormSchema);
 
 
 
